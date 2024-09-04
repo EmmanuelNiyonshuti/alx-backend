@@ -5,8 +5,6 @@ from base_caching import BaseCaching
 
 class FIFOCache(BaseCaching):
     """  inherits from BaseCaching and is a caching system """
-    def __init__(self):
-        super().__init__()
 
     def put(self, key, item):
         if key is None or item is None:
