@@ -10,13 +10,25 @@ class BasicCache(BaseCaching):
         super().__init__()
 
     def put(self, key, item):
-        """assign to the dictionary self.cache_data
-        the item value for the key `key` """
+        """
+        assigns `item` to dictionary self.cache_data's key.
+        Args:
+            key (str) - key in a self.cache_data dictionary.
+            item - value to be assigned to a key (can be any type)
+        Return:
+            modified dictionary
+        """
         if key is None or item is None:
             return
         cache_data = self.cache_data[key] = item
         return cache_data
 
     def get(self, key):
-        """ return the value in self.cache_data linked to key """
+        """
+        retrieves a value  linked to `key` from self.cache_data dictionary.
+        Args:
+            key (str) - dictionary key
+        Return:
+            value associated with the key if the key exists, None otherwise.
+        """
         return self.cache_data.get(key)

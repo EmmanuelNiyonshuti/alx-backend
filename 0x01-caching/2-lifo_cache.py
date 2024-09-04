@@ -1,32 +1,30 @@
 #!/usr/bin/env python3
-"""Comprises class FIFOCache """
-
+""" comprises LIFOCache class implementation """
 from base_caching import BaseCaching
 BasicCache = __import__("0-basic_cache").BasicCache
 
 
-class FIFOCache(BaseCaching):
-    """  Implements a FIFO caching system """
+class LIFOCache(BaseCaching):
+    """ Implements lifo caching system """
 
     def put(self, key, item):
         """
         overides `put` from BasicCache class,
-        deletes the first inserted item(or the older item) from the dictionary
-        `self.cache_data` (implementing fifo) if the size of the dictionary
-        is higher than the required maximum items
-        and prints the removed item's key.
+        deletes the last inserted item (or the recent inserted item)
+        from the dictionary `self.cache_data` (implementing lifo)
+        if the size of the dictionary is higher than
+        the required maximum items and prints the removed item's key.
         Args:
             key (str)
-            item -(can be of any type)
+            item (can be of any type)
         Return:
             Void.
         """
-        BasicCache.put(self, key, item)
+        BasicCache.put(key, item)
         max_items = super().MAX_ITEMS
         if len(self.cache_data) > max_items:
-            first_key = next(iter(self.cache_data))
-            del self.cache_data[first_key]
-            print("DISCARD: {}".format(first_key))
+            last_item = self.cache_data.popitem()
+            print(f"DISCARD: {last_item[0]}")
 
     def get(self, key):
         """
@@ -36,4 +34,4 @@ class FIFOCache(BaseCaching):
         Return:
             value associated with the key if the key exists, None otherwise.
         """
-        return BasicCache.get(self, key)
+        return BasicCache.get(key)
