@@ -9,7 +9,7 @@ class FIFOCache(BaseCaching):
 
     def put(self, key, item):
         BasicCache.put(self, key, item)
-        max_items = super().MAX_ITEMS
+        max_items = BaseCaching.MAX_ITEMS
         if len(self.cache_data) > max_items:
             first_key = next(iter(self.cache_data))
             del self.cache_data[first_key]
