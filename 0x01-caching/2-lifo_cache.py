@@ -20,7 +20,7 @@ class LIFOCache(BaseCaching):
         Return:
             Void.
         """
-        BasicCache.put(key, item)
+        BasicCache.put(self, key, item)
         max_items = super().MAX_ITEMS
         if len(self.cache_data) > max_items:
             last_item = self.cache_data.popitem()
@@ -34,4 +34,4 @@ class LIFOCache(BaseCaching):
         Return:
             value associated with the key if the key exists, None otherwise.
         """
-        return BasicCache.get(key)
+        return BasicCache.get(self, key)
