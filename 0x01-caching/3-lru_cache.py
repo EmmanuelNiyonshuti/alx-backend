@@ -12,7 +12,7 @@ class LRUCache(BaseCaching):
     def put(self, key, item):
         """
         Add or update an item in the cache.
-        
+
         - If the key already exists, update its value
           and move it to the end of the list.
         - If the key does not exist and the cache is full,
@@ -33,7 +33,7 @@ class LRUCache(BaseCaching):
     def get(self, key):
         """
         Retrieve an item from the cache.
-        
+
         - If the key exists, move it to the end of the list
             (mark it as most recently used) and return its value.
         - If the key does not exist, return None.
