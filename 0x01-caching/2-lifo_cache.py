@@ -7,24 +7,33 @@ BasicCache = __import__("0-basic_cache").BasicCache
 class LIFOCache(BaseCaching):
     """ Implements lifo caching system """
 
+    def __init__(self):
+        super().__init__()
+        self.stack = []
+
     def put(self, key, item):
         """
-        overides `put` from BasicCache class,
-        deletes the last inserted item (or the recent inserted item)
-        from the dictionary `self.cache_data` (implementing lifo)
-        if the size of the dictionary is higher than
-        the required maximum items and prints the removed item's key.
+        implements LIFO. when the cache reaches the required
+        capacity(max_items) discards the most recently
+        added or updated item in the cache.
         Args:
             key (str)
             item (can be of any type)
         Return:
             Void.
         """
-        BasicCache.put(self, key, item)
-        max_items = super().MAX_ITEMS
-        if len(self.cache_data) > max_items:
-            last_item = self.cache_data.popitem()
-            print(f"DISCARD: {last_item[0]}")
+        if key is None or item is None:
+            return
+        if key in self.cache_data:
+            self.stack.remove(key)
+
+        elif len(self.cache_data) >= self.MAX_ITEMS:
+            mru_key = self.stack.pop()
+            del self.cache_data[mru_key]
+            print(f"DISCARD: {mru_key}")
+
+        self.cache_data[key] = item
+        self.stack.append(key)
 
     def get(self, key):
         """
