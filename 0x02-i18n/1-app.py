@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
-""" instamtiate Babel object"""
-from config import Config
+""" basic Babel object set up"""
 from flask_babel import Babel
 app = __import__("0-app").app
 
 
-app.config.from_object(Config)
+class Config:
+    LANGUAGES = ["en", "fr"]
+    BABEL_DEFAULT_LOCALE = "en"
+    BABEL_DEFAULT_TIMEZONE = "UTC"
 
+
+app.config.from_object(Config)
 babel = Babel(app)
