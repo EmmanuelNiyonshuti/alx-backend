@@ -5,6 +5,7 @@ app = __import__("0-app").app
 
 
 class Config:
+    """ app configurations class"""
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
