@@ -1,6 +1,7 @@
-#!/usr/bin.env python3
+#!/usr/bin/env python3
 """ Get locale from requests implementation"""
 from flask import request
+app = __import__("0-app").app
 babel = __import__("1-app").babel
 
 
