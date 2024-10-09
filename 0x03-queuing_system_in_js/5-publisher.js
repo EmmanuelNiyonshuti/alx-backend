@@ -1,4 +1,6 @@
 #!/usr/bin/node
+// connects to redis server
+// publish message to 'holberton school channel' with a specified time delay.
 
 import redis from 'redis';
 

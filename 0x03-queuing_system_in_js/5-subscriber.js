@@ -1,5 +1,8 @@
 #!/usr/bin/node
 
+// connects to redis server , 
+// listen for message comming from 'holberton school channel'.
+
 import redis from 'redis';
 
 const client = redis.createClient();
@@ -12,7 +15,7 @@ client.subscribe('holberton school channel');
 client.on('message', (channel, msg) => {
     console.log(msg);
     if (msg === 'KILL_SERVER'){
-        client.unsubscribe('holberton school channel');
+        client.unsubscribe(channel);
         client.quit();
     }
 })
