@@ -1,5 +1,4 @@
 #!/usr/bin/node
-
 // connects to redis server , 
 // listen for message comming from 'holberton school channel'.
 
