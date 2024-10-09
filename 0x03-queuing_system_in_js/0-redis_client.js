@@ -1,3 +1,5 @@
+#!/usr/bin/node
+
 // connects to local redis server.
 
 import redis from 'redis';

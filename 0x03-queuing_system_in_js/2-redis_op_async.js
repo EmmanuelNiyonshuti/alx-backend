@@ -1,3 +1,5 @@
+#!/usr/bin/node
+
 import redis from 'redis';
 import util from 'util';
 
@@ -27,3 +29,5 @@ async function displaySchoolValue(schoolName){
 displaySchoolValue('Holberton');
 setNewSchool('HolbertonSanFrancisco', '100');
 displaySchoolValue('HolbertonSanFrancisco');
+
+module.exports = redis;

@@ -1,3 +1,5 @@
+#!/usr/bin/node
+
 import redis from 'redis';
 
 const client = redis.createClient();
@@ -25,3 +27,6 @@ function displaySchoolValue(schoolName){
 displaySchoolValue('Holberton');
 setNewSchool('HolbertonSanFrancisco', '100');
 displaySchoolValue('HolbertonSanFrancisco');
+
+module.exports = client;
+
